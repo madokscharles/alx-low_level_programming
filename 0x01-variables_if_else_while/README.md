@@ -1,1 +1,1 @@
-This is the project content
+Project content
