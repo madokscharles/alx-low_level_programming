@@ -8,25 +8,25 @@
 
 int main(void)
 {
-	long int i, j, max;
+	long int i, j, lp, num = 612852475143;
+	int prime;
 
-	i = 612852475143;
-	max = -1;
-	while (i % 2 == 0)
+	for (i = 2; i < num / 2; i++)
 	{
-		max = 2;
-		i /= 2;
-	}
-	for (j = 3; j <= sqrt(i); j = i + 2)
-	{
-		while (i % j == 0)
+		prime = 1;
+		if (num % i == 0)
+			lp = num / i;
+		for (j = 2; j < lp / 2; j++)
+			if (lp % j == 0)
+			{
+				prime = 0;
+				break;
+			}
+		if (prime)
 		{
-			max = j;
-			i = i / j;
+			printf("%ld\n", lp);
+			break;
 		}
 	}
-	if (i > 2)
-		max = i;
-	printf("%ld\n", max);
 	return (0);
 }
