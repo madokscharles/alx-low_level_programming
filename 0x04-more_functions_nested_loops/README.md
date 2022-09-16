@@ -1,1 +1,35 @@
-This is the project content
+Project Content for C - More functions, more nested loops
+
+0-isuper
+0-isupper.c
+0-main.c
+100-prime_factor
+100-prime_factor.c
+101-main.c
+101-print_number.c
+101-print_numbers
+10-main.c
+10-print_triangle.c
+10-triangles
+1-isdigit
+1-isdigit.c
+1-main.c
+2-mul.c
+3-print_numbers.c
+4-main.c
+4-print_most_numbers
+4-print_most_numbers.c
+5-more_numbers.c
+6-lines
+6-main.c
+6-print_line.c
+7-diagonals
+7-main.c
+7-print_diagonal.c
+8-main.c
+8-print_square.c
+8-squares
+9-fizz_buzz
+9-fizz_buzz.c
+main.h
+_putchar.c
