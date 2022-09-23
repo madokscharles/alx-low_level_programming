@@ -1,56 +1,68 @@
-#include "main.h"
 #include <stdio.h>
+#include <stdlib.h>
+void print_hex_line(char *buffer, int numBitsInLine, int currentPosition);
+void print_buffer_line(char *b, int n, int cur);
 
 /**
- * infinite_add - prints a buffer
- * @n1: number one.
- * @n2: number two
- * @r: buffer function will use
- * @size_r: buffer size
+ * print_buffer - prints a buffer
+ * @b: buffer to print
+ * @size: size of buffer
  *
- * Return: r
+ * Return: 0;
  */
 
-char *infinite_add(char *n1, char *n2, char *r, int size_r)
+void print_buffer(char *b, int size)
 {
-	int c1 = 0, c2 = 0, op, bg, dr1, dr2, add = 0;
+	int quo, rem, i = 0;
+	int bitCounter = 0, numBitsInLine;
 
-	while (*(n1 + c1) != '\0')
-		c1++;
-	while (*(n2 + c2) != '\0')
-		c2++;
-	if (c1 >= c2)
-		bg = c1;
-	else
-		bg = c2;
-	if (size_r <= bg + 1)
-		return (0);
-	r[bg + 1] = '\0';
-	c1--, c2--, size_r--;
-	dr1 = *(n1 + c1) - 48, dr2 = *(n2 + c2) - 48;
-	while (bg >= 0)
+	if (size == 0)
+		return;
+	quo = size / 10;
+	rem = size % 10;
+	if (rem)
+		quo++;
+	while (i < quo)
 	{
-		op = dr1 + dr2 + add;
-		if (op >= 10)
-			add = op / 10;
-		else
-			add = 0;
-		if (op > 0)
-			*(r + bg) = (op % 10) + 48;
-		else
-			*(r + bg) = '0';
-		if (c1 > 0)
-			c1--, dr1 = *(n1 + c1) - 48;
-		else
-			dr1 = 0;
-		if (c2 > 0)
-			c2--, dr2 = *(n2 + c2) - 48;
-		else
-			dr2 = 0;
-		bg--, size_r--;
+		numBitsInLine = (size - rem) > bitCounter ? 10 : rem;
+		printf("%.8x: ", bitCounter);
+		print_hex_line(b, numBitsInLine, bitCounter);
+		print_buffer_line(b, numBitsInLine, bitCounter);
+		putchar('\n');
+		bitCounter += 10;
+		i++;
 	}
-	if (*(r) == '0')
-		return (r + 1);
-	else
-		return (r);
+}
+void print_hex_line(char *b, int numBitsInLine, int currentPos)
+{
+	int nestedCounter = 0;
+
+	while (nestedCounter < 10)
+	{
+		if (nestedCounter >= numBitsInLine)
+			printf("  ");
+		else
+			printf("%.2x", b[currentPos + nestedCounter]);
+		if (nestedCounter % 2)
+			putchar(' ');
+		nestedCounter++;
+	}
+}
+void print_buffer_line(char *b, int numBitsInLine, int currentPos)
+{
+	int nestedCounter = 0;
+
+	while (nestedCounter < 10)
+	{
+		if (nestedCounter >= numBitsInLine)
+			break;
+		else if (b[currentPos + nestedCounter] >= 32
+				&& b[currentPos + nestedCounter] < 127)
+		{
+			printf("%c", b[currentPos + nestedCounter]);
+		}
+		else
+			printf(".");
+		nestedCounter++;
+	}
 }
