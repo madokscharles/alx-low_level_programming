@@ -22,14 +22,14 @@ void ch_free_grid(char **grid, unsigned int height)
 
 /**
  * strtow - splits a string into words
- * @str: string
+ * @str: string.
  *
  * Return: pointer of an array
  */
 
 char **strtow(char *str)
 {
-	char **pter;
+	char **aout;
 	unsigned int c, height, i, j, a1;
 
 	if (str == NULL || *str == '\0')
@@ -37,10 +37,10 @@ char **strtow(char *str)
 	for (c = height = 0; str[c] != '\0'; c++)
 		if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
 			height++;
-	pter = malloc((height + 1) * sizeof(char *));
-	if (pter == NULL || height == 0)
+	aout = malloc((height + 1) * sizeof(char *));
+	if (aout == NULL || height == 0)
 	{
-		free(pter);
+		free(aout);
 		return (NULL);
 	}
 	for (i = a1 = 0; i < height; i++)
@@ -51,8 +51,8 @@ char **strtow(char *str)
 				a1++;
 			if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
 			{
-				pter[i] = malloc((c - a1 + 2) * sizeof(char));
-				if (pter[i] == NULL)
+				aout[i] = malloc((c - a1 + 2) * sizeof(char));
+				if (aout[i] == NULL)
 				{
 					ch_free_grid(aout, i);
 					return (NULL);
@@ -61,9 +61,9 @@ char **strtow(char *str)
 			}
 		}
 		for (j = 0; a1 <= c; a1++, j++)
-			pter[i][j] = str[a1];
-		pter[i][j] = '\0';
+			aout[i][j] = str[a1];
+		aout[i][j] = '\0';
 	}
-	pter[i] = NULL;
-	return (pter);
+	aout[i] = NULL;
+	return (aout);
 }
