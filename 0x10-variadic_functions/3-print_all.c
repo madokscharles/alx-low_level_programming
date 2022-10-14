@@ -5,10 +5,8 @@
 /**
  * print_all - prints anything
  * @format: list of types of arguments passed to the function
- *
  * Return: no return
  */
-
 void print_all(const char * const format, ...)
 {
 	va_list arg_point;
@@ -50,6 +48,5 @@ void print_all(const char * const format, ...)
 				break;
 		} a++;
 	}
-	printf("\n");
-	va_end(arg_point);
+	printf("\n"), va_end(arg_point);
 }
