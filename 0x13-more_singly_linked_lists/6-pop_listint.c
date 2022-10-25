@@ -18,6 +18,7 @@ int pop_listint(listint_t **head)
 	{
 		keep = *head;
 		del_node = (**head).n;
+		*head = (**head).next;
 		free(keep);
 
 		return (del_node);
