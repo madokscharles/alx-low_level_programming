@@ -10,7 +10,7 @@
 size_t print_listint_safe(const listint_t *head)
 {
 	listint_t *action_1, *action_2;
-	unsigned int i, action;
+	int i, action;
 
 	action = 0;
 	if (!head)
