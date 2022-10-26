@@ -10,9 +10,8 @@
 size_t print_listint_safe(const listint_t *head)
 {
 	listint_t *action_1, *action_2;
-	int i, action;
+	int i, action = 0;
 
-	action = 0;
 	if (!head)
 		exit(98);
 	for (i = 1; (*head).next && !action; head = (*head).next, i++)
