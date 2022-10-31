@@ -22,7 +22,7 @@ void copy_text_file(int copyfile, int newfile, char *filefrom, char *fileto)
 		read_length = read(copyfile, buffer, sizeof(buffer));
 		if (read_length == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", fileto);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filefrom);
 			close(copyfile);
 			close(newfile);
 			exit(98);
@@ -32,7 +32,7 @@ void copy_text_file(int copyfile, int newfile, char *filefrom, char *fileto)
 		write_length = write(newfile, buffer, read_length);
 		if (write_length == -1 || write_length != read_length)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", newfile);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", fileto);
 			close(copyfile);
 			close(newfile);
 			exit(99);
