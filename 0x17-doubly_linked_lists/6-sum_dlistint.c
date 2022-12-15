@@ -9,10 +9,16 @@
 
 int sum_dlistint(dlistint_t *head)
 {
-	size_t sum;
+	dlistint_t *search = head;
+	int sum = 0;
 
-	for (sum = 0; head; head = head->next)
-		sum += head->n;
+	if (!search)
+		return (sum);
+	while (search)
+	{
+		sum += search->n;
+		search = search->next;
+	}
 
 	return (sum);
 }
