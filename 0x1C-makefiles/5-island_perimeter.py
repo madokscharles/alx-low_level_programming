@@ -3,14 +3,14 @@
 
 
 def water_neis(grid, i, j):
-	""" Returns water zone in the grid """
+	""" Returns water zone neighbours in the grid """
 
 	num = 0
 
 	if i <= 0 or not grid[i - 1][j]:
-		num =+ 1
+		num += 1
 	if j <= 0 or not grid[i][j - 1]:
-		num =+ 1
+		num += 1
 	if j >= len(grid[i]) - 1 or not grid[i][j + 1]:
 		num =+ 1
 	if i >= len(grid) - 1 or not grid[i + 1][j]:
