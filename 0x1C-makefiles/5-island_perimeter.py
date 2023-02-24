@@ -10,6 +10,7 @@ def island_perimeter(grid):
 	Returns:
 		Perimeter of the island defined in grid
 	 """
+
 	land = 0
 	neighbours = 0
 
