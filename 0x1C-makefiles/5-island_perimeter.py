@@ -11,6 +11,7 @@ def island_perimeter(grid):
 		Perimeter of the island defined in grid
 	 """
 
+	perimeter = 0
 	land = 0
 	neighbours = 0
 
@@ -23,4 +24,5 @@ def island_perimeter(grid):
 				if (i > 0 and grid[i - 1][j] == 1):
 					neighbours += 1
 
-	return 4 * land - 2 * neighbours
+	perimeter = 4 * land - 2 * neighbours
+	return perimeter
